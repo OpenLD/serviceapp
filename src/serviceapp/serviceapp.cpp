@@ -638,6 +638,7 @@ RESULT eServiceApp::connectEvent(const sigc::slot2< void, iPlayableService*, int
 RESULT eServiceApp::start()
 {
 	std::string path_str(m_ref.path);
+	std::string audiopath_str;
 	HeaderMap headers = getHeaders(m_ref.path);
 	if (options->HLSExplorer && options->autoSelectStream)
 	{
@@ -693,11 +694,17 @@ RESULT eServiceApp::start()
 					subservice.bitrate, subservice_idx);
 			}
 			path_str = subservice.url;
+
+			if (subservice.audio.compare(subservice.altmedia.groupid) == 0)	
+			{
+				audiopath_str = subservice.altmedia.uri;
+				eDebug("eServiceApp::start - alternative audiostream %s selected", audiopath_str.c_str());
+			}
 			headers = subservice.headers;
 		}
 	}
 	// don't pass fragment part to player
-	player->start(Url(path_str).url(), headers);
+	player->start(Url(path_str).url(), audiopath_str, headers);
 	return 0;
 }
 
