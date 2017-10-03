@@ -146,7 +146,7 @@ class BasePlayer: public iPlayerSend, public iPlayerCallback
 protected:
 	std::string mPath;
 	std::string mAudioPath;
-    std::string mSubtitlePath;
+	std::string mSubtitlePath;
 	std::map<std::string, std::string> mHeaders;
 	
 	void recvStarted(int status){pCallback->recvStarted(status);};
@@ -172,7 +172,7 @@ public:
 	void setCallback(iPlayerCallback *cb){pCallback = cb;}
 	void setPath(const std::string& path){mPath = path;}
 	void setAudioPath(const std::string& audiopath){mAudioPath = audiopath;}
-    void setSubtitlePath(const std::string& subtitlepath){mSubtitlePath = subtitlepath;}
+	void setSubtitlePath(const std::string& subtitlepath){mSubtitlePath = subtitlepath;}
 	void setHttpHeaders(const std::map<std::string, std::string>& headers){mHeaders = headers;}
 
 	virtual int start(eMainloop *context) = 0;
@@ -257,11 +257,11 @@ class PlayerBackend: public sigc::trackable, public eThread, public eMainloop, p
 
 	void sendMessage(const Message& m, int timeout=0);
 	void recvMessage();
-	
+
 	// eThread
 	void thread();
 	void thread_finished();
-	
+
 	// iPlayerCallback
 	void recvStarted(int status);
 	void recvStopped(int status);
