@@ -639,7 +639,7 @@ RESULT eServiceApp::start()
 {
 	std::string path_str(m_ref.path);
 	std::string audiopath_str;
-    std::string subtitlepath_str;
+	std::string subtitlepath_str;
 	HeaderMap headers = getHeaders(m_ref.path);
 	if (options->HLSExplorer && options->autoSelectStream)
 	{
@@ -696,12 +696,12 @@ RESULT eServiceApp::start()
 			}
 			path_str = subservice.url;
 
-			if (!subservice.audio.uri.empty())	
+			if (!subservice.audio.uri.empty())
 			{
 				audiopath_str = subservice.audio.uri;
 				eDebug("eServiceApp::start - alternative audiostream %s selected", audiopath_str.c_str());
 			}
-			if (!subservice.subtitles.uri.empty())	
+			if (!subservice.subtitles.uri.empty())
 			{
 				subtitlepath_str = subservice.subtitles.uri;
 				eDebug("eServiceApp::start - alternative subtitles %s available", subtitlepath_str.c_str());
