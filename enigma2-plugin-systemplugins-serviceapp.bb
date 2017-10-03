@@ -4,17 +4,22 @@ LICENSE = "GPLv2"
 LIC_FILES_CHKSUM = "file://COPYING;md5=b234ee4d69f5fce4486a80fdaf4a4263"
 
 DEPENDS = "enigma2 uchardet openssl"
-RDEPENDS_${PN} = "enigma2 uchardet openssl"
+RDEPENDS_${PN} = "enigma2 uchardet openssl python-json"
+RRECOMMENDS_${PN} = "exteplayer3 gstplayer"
 
 SRCREV = "${AUTOREV}"
-SRC_URI = "git://github.com/mx3L/serviceapp.git;branch=master"
+SRC_URI = " \
+    ${@bb.utils.contains('DISTRO_FEATURES', 'libsigc2', 'git://github.com/OpenLD/serviceapp.git;branch=develop', 'git://github.com/OpenLD/serviceapp.git;branch=master', d)} \
+    "
 
 S = "${WORKDIR}/git"
 
-inherit autotools gitpkgv pythonnative pkgconfig
+inherit autotools gitpkgv pythonnative pkgconfig gettext
 
-PV = "git${SRCPV}"
-PKGV = "git${GITPKGV}"
+CXXFLAGS_append = " -std=c++11"
+
+PV = "1+git${SRCPV}"
+PKGV = "1+git${GITPKGV}"
 
 EXTRA_OECONF = "\
 	BUILD_SYS=${BUILD_SYS} \
