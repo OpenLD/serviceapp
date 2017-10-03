@@ -38,9 +38,9 @@ config.plugins.serviceapp                               = ConfigSubsection()
 config_serviceapp                                       = config.plugins.serviceapp
 
 config_serviceapp.servicemp3                            = ConfigSubsection()
-config_serviceapp.servicemp3.replace                    = ConfigBoolean(default=False, descriptions={0: _("original"), 1: _("serviceapp")})
+config_serviceapp.servicemp3.replace                    = ConfigBoolean(default=1, descriptions={0: _("original"), 1: _("serviceapp")})
 config_serviceapp.servicemp3.replace.value              = serviceapp_client.isServiceMP3Replaced()
-config_serviceapp.servicemp3.player                     = ConfigSelection(default="gstplayer", choices=player_choices)
+config_serviceapp.servicemp3.player                     = ConfigSelection(default="exteplayer3", choices=player_choices)
 
 config_serviceapp.options                               = ConfigSubDict()
 config_serviceapp.options["servicemp3"]                 = ConfigSubsection()
