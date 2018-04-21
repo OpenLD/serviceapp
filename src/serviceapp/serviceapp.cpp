@@ -1394,7 +1394,7 @@ eServiceFactoryApp::~eServiceFactoryApp()
 }
 
 
-eAutoInitPtr<eServiceFactoryApp> init_eServiceFactoryApp(eAutoInitNumbers::service+1, "eServiceFactoryApp");
+eAutoInitPtr<eServiceFactoryApp> init_eServiceFactoryApp(eAutoInitNumbers::service+3, "eServiceFactoryApp");
 
 
 static PyObject *

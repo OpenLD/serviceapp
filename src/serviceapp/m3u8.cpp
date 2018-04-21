@@ -388,7 +388,7 @@ int M3U8VariantsExplorer::getVariantsFromMasterUrl(const std::string& url, Heade
                 {
                     std::string variant(lineBuffer);
                     std::string base = url;
-                    int count((variant.rfind("../")+3)/3);              
+                    int count((variant.rfind("../")+3)/3);
                     if(count > 0)
                     {
                         variant = variant.substr(variant.rfind("../")+3);
